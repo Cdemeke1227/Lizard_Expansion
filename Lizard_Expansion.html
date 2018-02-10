@@ -3,8 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./reset.css">
     <link rel="stylesheet" href="./RPS.css">
     <title>Lizard_Expansion</title>
@@ -34,163 +32,189 @@
         <h3>Type [ l ] for LIZARD</h3>
     </div>
     <div class="box" id="scissorsBox">
-        <h3>Type [ x ] for SPOCK</h3>
+        <h3>Type [ v ] for SPOCK</h3>
     </div>
     <!-- </div> -->
     </div>
     <br>
     <div class="winnerIs">
-        <h3 id="gameOutcome"></h3>
+        <h4 id="gameOutcome">
+            </h3>
     </div>
+    <div class="Score">
+        <h4 id="Wins">
+            </h3>
+    </div>
+    <br>
 
     <script>
         // user selects r,p,s
-        // computer selects randomly from a an list of r,p,s,l,sp
+        // computer selects randomly from a an list of r,p,s,l,v
 
-        // If user has r and computer has s, user wins
-        // If user has r and computer has l, user wins
-        // p
-        // x
-
-
-        // If user has p and computer has r, user wins
-        // If user has p and computer has x, user wins
-        // l
-        // s
-
-
-        // If user has s and computer has p, user wins
-        // If user has s and computer has l, user wins
-        // r
-        //x
-
-        // If user has l and computer has x, user wins
-        // If user has l and computer has p, user wins
-        // r
-        // s
-
-        // If user has x and computer has s, user wins
-        // If user has x and computer has r, user wins
-        // p
-        // l
-
-        // If user choice match computer choice, tie
-
-        var computerChoices = ["r", "p", "s", "l", "x"];
+        // creating an array that lists out the computer options
+        var computerChoices = ["r", "p", "s", "l", "v"];
+        // variable to track the number of wins, loses, or ties.
+        var wins = 0;
+        var losses = 0;
+        var ties = 0;
+        // This function is run when the user releases a key
         document.onkeyup = function (event) {
-
+            // binds what key was pressed to the userGuess variable
             var userGuess = event.key;
-
+            // randomly selects from the computer choise array
             var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
+            // variable to bind the result of each game
             var result = document.getElementById("gameOutcome");
 
-            console.log(computerGuess);
             console.log(userGuess);
+            console.log(computerGuess);
 
-            // ********* Rock
-            if ((userGuess.toLowerCase() === "r") && (computerGuess.toLowerCase() == "s")) {
-                result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]        User Wins ...  Rock crushes Scissors";
-                var text = result.textContent;
-                console.log(result);
-            }
-            if ((userGuess.toLowerCase() === "r") && (computerGuess.toLowerCase() == "l")) {
-                result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]        User Wins ...  Rock crushes Lizard";
-                console.log(result);
-            }
-            // ********* Papper
-            if ((userGuess.toLowerCase() === "p") && (computerGuess.toLowerCase() == "r")) {
-                result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]        User Wins  ...  Paper covers Rock";
-                console.log(result);
-            }
-            if ((userGuess.toLowerCase() === "p") && (computerGuess.toLowerCase() == "x")) {
-                result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]        pUser Wins  ...  Paper disproves Spock";
-                console.log(result);
-            }
-            // ********* Scissors
-            if ((userGuess.toLowerCase() === "s") && (computerGuess.toLowerCase() == "p")) {
-                result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]        User Wins  ...  Scissors cuts Paper";
-                console.log(result);
-            }
-            if ((userGuess.toLowerCase() === "s") && (computerGuess.toLowerCase() == "l")) {
-                result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]        User Wins ...  Scissors decapitates Lizard";
-                console.log(result);
-            }
-            // ********* Lizard         
-            if ((userGuess.toLowerCase() === "l") && (computerGuess.toLowerCase() == "x")) {
-                result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]        User Wins  ...  Lizard poisons Spock";
-                console.log(result);
-            }
-            if ((userGuess.toLowerCase() === "l") && (computerGuess.toLowerCase() == "p")) {
-                result.textContent =  "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]        User Wins  ...  Lizard eats paper";
-                console.log(result);
-            }
-            // ********* Spock
-            if ((userGuess.toLowerCase() === "x") && (computerGuess.toLowerCase() == "s")) {
-                result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]        User Wins  ...  Spock smashes Scissors";
-                console.log(result);
-            }
-            if ((userGuess.toLowerCase() === "x") && (computerGuess.toLowerCase() == "r")) {
-                result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]        User Wins  ...  Spock vaporizes Rock";
-                console.log(result);
-            }
-            // *****************
-            // *****************
-            // *****************
-            // *****************
-            // ********* Rock
-            if ((computerGuess.toLowerCase() === "r") && (userGuess.toLowerCase() == "s")) {
-                result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]        Computer Wins  ...  Rock crushes Scissors";
-                console.log(result);
-            }
-            if ((computerGuess.toLowerCase() === "r") && (computerGuess.toLowerCase() == "l")) {
-                result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]        Computer Wins ...  Rock crushes Lizard";
-                console.log(result);
-            }
-            // ********* Paper
 
-            if ((computerGuess.toLowerCase() === "p") && (userGuess.toLowerCase() == "r")) {
-                result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]        Computer Wins  ...  Paper covers Rock";
-                console.log(result);
-            }
-            if ((computerGuess.toLowerCase() === "p") && (computerGuess.toLowerCase() == "x")) {
-                result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]        Computer Wins  ...  Paper disproves Spock";
-                console.log(result);
-            }
-            // ********* Scissors
-            if ((computerGuess.toLowerCase() === "s") && (userGuess.toLowerCase() == "p")) {
-                result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]        Computer Wins  ...  Scissors cuts Paper";
-                console.log(result);
-            }
-            if ((computerGuess.toLowerCase() === "s") && (computerGuess.toLowerCase() == "l")) {
-                result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]        Computer Wins ...  Scissors decapitates Lizard";
-                console.log(result);
-            }
-            // ********* Lizard
+            if ((userGuess.toLowerCase() === "r") || (userGuess.toLowerCase() === "p") || (userGuess.toLowerCase() === "s") || (userGuess.toLowerCase() === "l") || (userGuess.toLowerCase() === "v")) {
 
-            if ((computerGuess.toLowerCase() === "l") && (computerGuess.toLowerCase() == "x")) {
-                result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]        Computer Wins  ...  Lizard poisons Spock";
-                console.log(result);
+                // ********* Rock
+                // If user has r and computer has s, user wins
+                // If user has r and computer has l, user wins
+                if ((userGuess.toLowerCase() === "r") && (computerGuess == "s")) {
+                    result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]                 User Wins ...  Rock crushes Scissors";
+                    var text = result.textContent;
+                    console.log(result);
+                    wins++;
+                }
+                else if ((userGuess.toLowerCase() === "r") && (computerGuess == "l")) {
+                    result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]                 User Wins ...  Rock crushes Lizard";
+                    console.log(result);
+                    wins++;
+                }
+                // ********* Papper
+                // If user has p and computer has r, user wins
+                // If user has p and computer has v, user wins
+
+                else if ((userGuess.toLowerCase() === "p") && (computerGuess == "r")) {
+                    result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]                 User Wins  ...  Paper covers Rock";
+                    console.log(result);
+                    wins++;
+                }
+                else if ((userGuess.toLowerCase() === "p") && (computerGuess == "v")) {
+                    result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]                 User Wins  ...  Paper disproves Spock";
+                    console.log(result);
+                    wins++;
+                }
+                // ********* Scissors
+                // If user has s and computer has p, user wins
+                // If user has s and computer has l, user wins
+                else if ((userGuess.toLowerCase() === "s") && (computerGuess == "p")) {
+                    result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]                  User Wins  ...  Scissors cuts Paper";
+                    console.log(result);
+                    wins++;
+                }
+                else if ((userGuess.toLowerCase() === "s") && (computerGuess == "l")) {
+                    result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]                  User Wins ...  Scissors decapitates Lizard";
+                    console.log(result);
+                    wins++;
+                }
+                // ********* Lizard   
+                // If user has l and computer has x, user wins
+                // If user has l and computer has p, user wins      
+                else if ((userGuess.toLowerCase() === "l") && (computerGuess == "v")) {
+                    result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]                  User Wins  ...  Lizard poisons Spock";
+                    console.log(result);
+                    wins++;
+                }
+                else if ((userGuess.toLowerCase() === "l") && (computerGuess == "p")) {
+                    result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]                  User Wins  ...  Lizard eats paper";
+                    console.log(result);
+                    wins++;
+                }
+                // ********* Spock
+
+                // If user has x and computer has s, user wins
+                // If user has x and computer has r, user wins
+                else if ((userGuess.toLowerCase() === "v") && (computerGuess == "s")) {
+                    result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]                  User Wins  ...  Spock smashes Scissors";
+                    console.log(result);
+                    wins++;
+                }
+                else if ((userGuess.toLowerCase() === "v") && (computerGuess == "r")) {
+                    result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]                  User Wins  ...  Spock vaporizes Rock";
+                    console.log(result);
+                    wins++;
+                }
+                // *****************
+                // *****************
+                // *****************
+                // *****************
+                // ********* Rock
+                else if ((computerGuess === "r") && (userGuess.toLowerCase() == "s")) {
+                    result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]                  Computer Wins  ...  Rock crushes Scissors";
+                    console.log(result);
+                    losses++;
+                }
+                else if ((computerGuess === "r") && (userGuess.toLowerCase() == "l")) {
+                    result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]                  Computer Wins ...  Rock crushes Lizard";
+                    console.log(result);
+                    losses++;
+                }
+                // ********* Paper
+
+                else if ((computerGuess === "p") && (userGuess.toLowerCase() == "r")) {
+                    result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]                  Computer Wins  ...  Paper covers Rock";
+                    console.log(result);
+                    losses++;
+                }
+                else if ((computerGuess === "p") && (userGuess.toLowerCase() == "v")) {
+                    result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]                  Computer Wins  ...  Paper disproves Spock";
+                    console.log(result);
+                    losses++;
+                }
+                // ********* Scissors
+                else if ((computerGuess === "s") && (userGuess.toLowerCase() == "p")) {
+                    result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]                  Computer Wins  ...  Scissors cuts Paper";
+                    console.log(result);
+                    losses++;
+                }
+                else if ((computerGuess === "s") && (userGuess.toLowerCase() == "l")) {
+                    result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]                  Computer Wins ...  Scissors decapitates Lizard";
+                    console.log(result);
+                }
+                // ********* Lizard
+
+                else if ((computerGuess === "l") && (userGuess.toLowerCase() == "v")) {
+                    result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]                 Computer Wins  ...  Lizard poisons Spock";
+                    console.log(result);
+                    losses++;
+                }
+                else if ((computerGuess === "l") && (userGuess.toLowerCase() == "p")) {
+                    result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]                  Computer Wins  ...  Lizard eats paper";
+                    console.log(result);
+                    losses++;
+                }
+                // ********* Spock
+                else if ((computerGuess === "v") && (userGuess.toLowerCase() == "s")) {
+                    result.textContent = "Computer Wins  ...  Spock smashes Scissors";
+                    console.log(result);
+                    losses++;
+                }
+                else if ((computerGuess === "v") && (userGuess.toLowerCase() == "r")) {
+                    result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]                  Computer Wins  ...  Spock vaporizes Rock";
+                    console.log(result);
+                    losses++;
+                }
+                // ***************** TIE
+                // If user choice match computer choice, tie
+                else if (userGuess.toLowerCase() === computerGuess) {
+                    result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]                  Its a Tie!";
+                    console.log(result);
+                    ties++;
+                }
+                var html =
+                    "||     WINS: " + wins + "    |" + "|     LOSSES: " + losses + "    |" + "|     TIES: " + ties + "    ||";
+
+                // Set the inner HTML contents of the #game div to our html string
+                document.querySelector("#Wins").innerHTML = html;
             }
-            if ((computerGuess.toLowerCase() === "l") && (computerGuess.toLowerCase() == "p")) {
-                result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]        Computer Wins  ...  Lizard eats paper";
-                console.log(result);
-            }
-            // ********* Spock
-            if ((computerGuess.toLowerCase() === "x") && (computerGuess.toLowerCase() == "s")) {
-                result.textContent = "Computer Wins  ...  Spock smashes Scissors";
-                console.log(result);
-            }
-            if ((computerGuess.toLowerCase() === "x") && (computerGuess.toLowerCase() == "r")) {
-                result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]        Computer Wins  ...  Spock vaporizes Rock";
-                console.log(result);
-            }
-            // ***************** TIE
-            if (userGuess.toLowerCase() === computerGuess.toLowerCase()) {
-                result.textContent = "User selects  [" + userGuess + "]  Computer selects  [" + computerGuess + "]        Game is a Tie";
-                console.log(result);
-            }
-        }
+        };
 
     </script>
 
